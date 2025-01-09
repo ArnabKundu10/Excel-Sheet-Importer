@@ -14,7 +14,7 @@ exports.uploadCandidates = async (req, res) => {
     const sheet = workbook.Sheets[workbook.SheetNames[0]];
     // console.log(sheet);
     const data = xlsx.utils.sheet_to_json(sheet);
-   console.log(data);
+  //  console.log(data);
     // process each candidate row 
     let dups = 0;
     async.eachSeries(
