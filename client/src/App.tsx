@@ -8,7 +8,10 @@ const App: React.FC = () => {
     const [loading,setLoading] = useState<boolean>(false);
     const [uploaded,setuploaded]=useState<boolean>(false);
     const fileInputRef = useRef<HTMLInputElement | null>(null);
-
+    const apiUrl = 
+   window.location.hostname === "localhost"
+     ? "http://localhost:5000"
+     : "https://excel-sheet-importer-3k8q.vercel.app";
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files){
             setFile(e.target.files[0]);
@@ -29,7 +32,7 @@ const App: React.FC = () => {
         formData.append('file', file);
        setLoading(true);
         try {
-            const response = await axios.post('http://localhost:5000/api/candidates/upload', formData, {
+            const response = await axios.post(apiUrl, formData, {
                 headers: { 'Content-Type': 'multipart/form-data' },
             });
             setuploaded(true);
