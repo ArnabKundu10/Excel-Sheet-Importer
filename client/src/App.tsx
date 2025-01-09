@@ -1,4 +1,4 @@
-import React, { useState,useRef,lazy, Suspense } from 'react';
+import React, { useState,useRef} from 'react';
 import axios from 'axios';
 import "./App.css"
 const App: React.FC = () => {
@@ -20,8 +20,7 @@ const App: React.FC = () => {
       };
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        e.stopPropagation();
-        
+        e.stopPropagation();     
         if (!file) {
             alert('Please select a file!');
             return;
@@ -64,7 +63,7 @@ const App: React.FC = () => {
                 <i className="rounded-circle text-white p-3 fs-2 bg-dark fa-solid fa-upload"></i>
                 <input
                     type="file"
-                    accept=".xlsx, .xls" // Only accept Excel files
+                    accept=".xlsx, .xls"
                     ref={fileInputRef}
                     className="d-none"
                     onChange={handleFileChange}

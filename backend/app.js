@@ -1,13 +1,14 @@
 const express = require("express");
+require("dotenv").config();
 const mongoose = require("mongoose");
 const cors = require("cors");
 const candidateRoutes = require("./routes/candidateRoutes");
 
 const app = express();
-const PORT = 5000;
+const PORT = 5000 || process.env.PORT;
 
 // MongoDB Connection
-const password = encodeURIComponent("Arnab12@");
+const password = encodeURIComponent(process.env.MONGO_PASSWORD);
 const DB = `mongodb+srv://Arnab:${password}@atlascluster.esd35xx.mongodb.net/excelupload?retryWrites=true&w=majority`;
 const DBconnect = async () => {
   try {
@@ -19,7 +20,6 @@ const DBconnect = async () => {
   }
 };
 DBconnect();
-// Middleware
 app.use(
   cors({
     origin: "*",
@@ -27,6 +27,7 @@ app.use(
     credentials: true,
   })
 );
+// Middleware
 app.use(express.json());
 app.use("/api/candidates", candidateRoutes);
 
