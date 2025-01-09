@@ -10,7 +10,7 @@ const App: React.FC = () => {
     const fileInputRef = useRef<HTMLInputElement | null>(null);
     const apiUrl = 
    window.location.hostname === "localhost"
-     ? "http://localhost:5000"
+     ? "http://localhost:5000/api/candidates/upload"
      : "https://excel-sheet-importer.vercel.app/api/candidates/upload";
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files){
