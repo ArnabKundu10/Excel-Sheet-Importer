@@ -22,7 +22,7 @@ const DBconnect = async () => {
 DBconnect();
 app.use(
   cors({
-    origin: "https://excel-sheet-importer-3k8q.vercel.app",
+    origin: "*",
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
   })
