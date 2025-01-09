@@ -51,10 +51,9 @@ exports.uploadCandidates = async (req, res) => {
           } else {
             dups += 1;
           }
-          // Proceed to the next record
         } catch (error) {
           console.error("Error processing row:", error.message);
-          callback(error); // Stop on error
+          callback(error);
         }
       },
       (err) => {
