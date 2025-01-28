@@ -5,7 +5,7 @@ const cors = require("cors");
 const candidateRoutes = require("./routes/candidateRoutes");
 
 const app = express();
-const PORT = 5000 || process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
 // MongoDB Connection
 const password = encodeURIComponent(process.env.MONGO_PASSWORD);
