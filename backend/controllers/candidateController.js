@@ -4,18 +4,18 @@ const fs = require("fs");
 const async = require("async");
 
 exports.uploadCandidates = async (req, res) => {
-  if (!req.file) 
-  return res.status(400).json({ error: "No file uploaded" });
-
-  const filePath = req.file.path;
   try {
+    console.log("dont panic! i have reached here");
+    if (!req.file) return res.status(400).json({ error: "No file uploaded" });
+    const filePath = req.file.path;
+
     // read excel file
     const workbook = xlsx.readFile(filePath);
     const sheet = workbook.Sheets[workbook.SheetNames[0]];
     // console.log(sheet);
     const data = xlsx.utils.sheet_to_json(sheet);
-  //  console.log(data);
-    // process each candidate row 
+    //  console.log(data);
+    // process each candidate row
     let dups = 0;
     async.eachSeries(
       data,
@@ -71,7 +71,7 @@ exports.uploadCandidates = async (req, res) => {
       }
     );
   } catch (err) {
-     // Delete uploaded file on error
+    // Delete uploaded file on error
     fs.unlinkSync(filePath);
     res
       .status(500)

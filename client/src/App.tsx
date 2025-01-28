@@ -43,6 +43,7 @@ const App: React.FC = () => {
             
             // alert(`Your records have ${response.data.duplicates} duplicate elements ${String.fromCodePoint(0x1F622)}`);
         } catch (error: any) {
+            console.log(error);
             setMessage(error.response?.data?.error || 'Something went wrong');
         }
     };
